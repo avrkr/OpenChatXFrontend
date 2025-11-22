@@ -11,6 +11,11 @@ const FriendList = ({ setSelectedChat }) => {
     const BACKEND_URL = import.meta.env.VITE_BACKEND_URL || 'http://localhost:3000';
 
     const fetchFriends = async () => {
+        if (!user || !user.token) {
+            console.log('User not authenticated yet');
+            return;
+        }
+
         try {
             const config = {
                 headers: {
@@ -26,8 +31,10 @@ const FriendList = ({ setSelectedChat }) => {
     };
 
     useEffect(() => {
-        fetchFriends();
-    }, []);
+        if (user && user.token) {
+            fetchFriends();
+        }
+    }, [user]);
 
     const handleResponse = async (requestId, action) => {
         try {

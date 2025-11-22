@@ -14,6 +14,11 @@ const UserSearch = () => {
         e.preventDefault();
         if (!keyword.trim()) return;
 
+        if (!user || !user.token) {
+            alert('Please login to search for users');
+            return;
+        }
+
         try {
             const config = {
                 headers: {
@@ -28,6 +33,11 @@ const UserSearch = () => {
     };
 
     const sendRequest = async (userId) => {
+        if (!user || !user.token) {
+            alert('Please login to send friend requests');
+            return;
+        }
+
         try {
             const config = {
                 headers: {

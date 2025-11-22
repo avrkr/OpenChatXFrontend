@@ -38,6 +38,11 @@ const ChatWindow = ({ chat, setChat }) => {
     useEffect(() => {
         if (!chat) return;
 
+        if (!user || !user.token) {
+            console.log('User not authenticated');
+            return;
+        }
+
         const fetchMessages = async () => {
             try {
                 const config = {
@@ -54,7 +59,7 @@ const ChatWindow = ({ chat, setChat }) => {
         };
 
         fetchMessages();
-    }, [chat]);
+    }, [chat, user]);
 
     useEffect(() => {
         messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
@@ -62,6 +67,11 @@ const ChatWindow = ({ chat, setChat }) => {
 
     const sendMessage = async (e) => {
         if (e.key === 'Enter' && newMessage) {
+            if (!user || !user.token) {
+                alert('Please login to send messages');
+                return;
+            }
+
             try {
                 const config = {
                     headers: {
