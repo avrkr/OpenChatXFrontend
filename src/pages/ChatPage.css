@@ -1,0 +1,159 @@
+.chat-container {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    background-color: #1a1a1a;
+    color: #fff;
+}
+
+.chat-header {
+    padding: 15px 30px;
+    background-color: #242424;
+    border-bottom: 1px solid #333;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.chat-header h2 {
+    margin: 0;
+    color: #646cff;
+}
+
+.user-info {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.logout-btn {
+    padding: 8px 16px;
+    background-color: #ff4d4d;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+.chat-layout {
+    display: flex;
+    flex: 1;
+    overflow: hidden;
+}
+
+.sidebar {
+    width: 300px;
+    background-color: #242424;
+    border-right: 1px solid #333;
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    gap: 20px;
+    overflow-y: auto;
+}
+
+.chat-area {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #1a1a1a;
+}
+
+.user-search input {
+    width: 100%;
+    padding: 10px;
+    background: #1a1a1a;
+    border: 1px solid #333;
+    border-radius: 6px;
+    color: white;
+    margin-bottom: 10px;
+}
+
+.user-search button {
+    width: 100%;
+    padding: 8px;
+    background: #646cff;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+.search-results {
+    margin-top: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.user-item,
+.friend-item,
+.request-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    background: #2a2a2a;
+    border-radius: 6px;
+}
+
+.request-item {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+}
+
+.request-item div {
+    display: flex;
+    gap: 10px;
+    width: 100%;
+}
+
+.accept-btn {
+    flex: 1;
+    background: #42d392;
+    border: none;
+    padding: 5px;
+    border-radius: 4px;
+    cursor: pointer;
+    color: #000;
+}
+
+.reject-btn {
+    flex: 1;
+    background: #ff4d4d;
+    border: none;
+    padding: 5px;
+    border-radius: 4px;
+    cursor: pointer;
+    color: #fff;
+}
+
+.chat-btn {
+    background: #646cff;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 4px;
+    color: white;
+    cursor: pointer;
+}
+
+.status-indicator {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
+.status-indicator.online {
+    background-color: #42d392;
+}
+
+.status-indicator.offline {
+    background-color: #666;
+}
+
+.status-indicator.busy {
+    background-color: #ff4d4d;
+}
