@@ -20,7 +20,7 @@ const RegisterPage = () => {
         }
         const result = await register(name, email, password);
         if (result.success) {
-            navigate('/chat');
+            navigate('/verify-otp', { state: { email } });
         } else {
             setError(result.message);
         }
