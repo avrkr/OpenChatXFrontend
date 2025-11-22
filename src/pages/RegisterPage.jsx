@@ -9,6 +9,7 @@ const RegisterPage = () => {
     const [password, setPassword] = useState('');
     const [confirmPassword, setConfirmPassword] = useState('');
     const [error, setError] = useState('');
+    const [loading, setLoading] = useState(false);
     const { register } = useContext(AuthContext);
     const navigate = useNavigate();
 
@@ -18,17 +19,24 @@ const RegisterPage = () => {
             setError('Passwords do not match');
             return;
         }
+        setLoading(true);
+        setError('');
         const result = await register(name, email, password);
         if (result.success) {
             navigate('/verify-otp', { state: { email } });
         } else {
             setError(result.message);
+            setLoading(false);
         }
     };
 
     return (
         <div className="auth-container">
             <div className="auth-card">
+                <div className="auth-logo">
+                    <h1 className="logo-text">OpenChatX</h1>
+                    <p className="logo-tagline">Connect & Collaborate</p>
+                </div>
                 <h2>Create Account</h2>
                 <p className="auth-subtitle">Join OpenChatX today</p>
                 {error && <div className="error-message">{error}</div>}
@@ -41,6 +49,7 @@ const RegisterPage = () => {
                             onChange={(e) => setName(e.target.value)}
                             required
                             placeholder="Enter your name"
+                            disabled={loading}
                         />
                     </div>
                     <div className="form-group">
@@ -51,6 +60,7 @@ const RegisterPage = () => {
                             onChange={(e) => setEmail(e.target.value)}
                             required
                             placeholder="Enter your email"
+                            disabled={loading}
                         />
                     </div>
                     <div className="form-group">
@@ -61,6 +71,7 @@ const RegisterPage = () => {
                             onChange={(e) => setPassword(e.target.value)}
                             required
                             placeholder="Create a password"
+                            disabled={loading}
                         />
                     </div>
                     <div className="form-group">
@@ -71,9 +82,19 @@ const RegisterPage = () => {
                             onChange={(e) => setConfirmPassword(e.target.value)}
                             required
                             placeholder="Confirm your password"
+                            disabled={loading}
                         />
                     </div>
-                    <button type="submit" className="auth-btn">Sign Up</button>
+                    <button type="submit" className="auth-btn" disabled={loading}>
+                        {loading ? (
+                            <>
+                                <span className="spinner"></span>
+                                Creating account...
+                            </>
+                        ) : (
+                            'Sign Up'
+                        )}
+                    </button>
                 </form>
                 <p className="auth-footer">
                     Already have an account? <Link to="/login">Login</Link>

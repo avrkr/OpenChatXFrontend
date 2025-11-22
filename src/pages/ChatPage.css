@@ -7,17 +7,23 @@
 }
 
 .chat-header {
-    padding: 15px 30px;
-    background-color: #242424;
+    background: #242424;
+    padding: 15px 20px;
     border-bottom: 1px solid #333;
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
 
-.chat-header h2 {
+.chat-header-logo {
+    font-size: 24px;
+    font-weight: 800;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
     margin: 0;
-    color: #646cff;
+    letter-spacing: -1px;
 }
 
 .user-info {
@@ -28,11 +34,16 @@
 
 .logout-btn {
     padding: 8px 16px;
-    background-color: #ff4d4d;
+    background: #ff4d4d;
     color: white;
     border: none;
-    border-radius: 6px;
+    border-radius: 5px;
     cursor: pointer;
+    font-weight: 600;
+}
+
+.logout-btn:hover {
+    background: #ff3333;
 }
 
 .chat-layout {

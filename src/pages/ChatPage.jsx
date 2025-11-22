@@ -12,7 +12,7 @@ const ChatPage = () => {
     return (
         <div className="chat-container">
             <header className="chat-header">
-                <h2>OpenChatX</h2>
+                <h2 className="chat-header-logo">OpenChatX</h2>
                 <div className="user-info">
                     <span>{user?.name}</span>
                     <button onClick={logout} className="logout-btn">Logout</button>

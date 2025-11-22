@@ -49,6 +49,10 @@ const VerifyOTPPage = () => {
     return (
         <div className="auth-container">
             <div className="auth-card">
+                <div className="auth-logo">
+                    <h1 className="logo-text">OpenChatX</h1>
+                    <p className="logo-tagline">Connect & Collaborate</p>
+                </div>
                 <h2>Verify Your Email</h2>
                 <p className="auth-subtitle">Enter the OTP sent to {email}</p>
                 {error && <div className="error-message">{error}</div>}
@@ -63,10 +67,18 @@ const VerifyOTPPage = () => {
                             placeholder="Enter 6-digit OTP"
                             maxLength="6"
                             pattern="[0-9]{6}"
+                            disabled={loading}
                         />
                     </div>
                     <button type="submit" className="auth-btn" disabled={loading}>
-                        {loading ? 'Verifying...' : 'Verify OTP'}
+                        {loading ? (
+                            <>
+                                <span className="spinner"></span>
+                                Verifying...
+                            </>
+                        ) : (
+                            'Verify OTP'
+                        )}
                     </button>
                 </form>
                 <p className="auth-footer">
